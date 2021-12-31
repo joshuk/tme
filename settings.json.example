@@ -1,0 +1,12 @@
+{
+  "nonBillableProjects": ["12345", "67890"],
+  "shortcuts": {
+    "standup": {
+      "name": "Team Stand-up",
+      "project": "12345",
+      "tasklist": "1234567",
+      "task": "123456789",
+      "description": "Team Stand-up"
+    },
+  }
+}
