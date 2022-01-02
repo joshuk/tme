@@ -1,5 +1,6 @@
+#!/usr/bin/env node
+
 const parseArgs = require('minimist');
-const inquirer = require('inquirer');
 
 const settings = require('./settings.json')
 

@@ -1,0 +1,26 @@
+{
+  "name": "tme",
+  "version": "1.0.0",
+  "description": "A simple command line app to log time with Teamwork.com",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "dotenv": "^10.0.0",
+    "inquirer": "^8.2.0",
+    "minimist": "^1.2.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshuk/tme.git"
+  },
+  "author": "joshuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshuk/tme/issues"
+  },
+  "homepage": "https://github.com/joshuk/tme#readme",
+  "bin": {
+    "tme": "./index.js"
+  }
+}
