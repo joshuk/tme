@@ -2,18 +2,22 @@
 
 const parseArgs = require('minimist');
 
-const settings = require('./settings.json')
-
 const TeamworkApiHelper = require('./src/TeamworkApiHelper');
 const DateTimeHelper = require('./src/DateTimeHelper');
 const FileHelper = require('./src/FileHelper');
 const MenuHelper = require('./src/MenuHelper');
 
-const apiClient = new TeamworkApiHelper();
+const apiClient = new TeamworkApiHelper(__dirname);
 const dateTime = new DateTimeHelper();
-const fileHelper = new FileHelper();
+const fileHelper = new FileHelper(__dirname);
 const menuHelper = new MenuHelper();
 
+
+//Check if settings file exists, import it if so
+let settings = {}
+if (fileHelper.doesFileExist('/settings.json', __dirname)) {
+  settings = require(`./settings.json`)
+}
 
 // Since this is used in a couple of places and doesn't change, may as well put it here
 const filename = `${dateTime.getFullDate()}.json`
@@ -195,6 +199,9 @@ const logTime = async ({ project, tasklist, task, description, projectName } = {
     // If the current shortcut is inside the shortcuts specified in the settings
     if (shortcuts.includes(currentShortcut)) {
       const shortcutInfo = settings.shortcuts[currentShortcut]
+
+      console.log(`Using shortcut: ${shortcutInfo.name || currentShortcut}`)
+      console.log('')
 
       // Now just run logTime with the stuff we've got from the settings
       await logTime({

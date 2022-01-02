@@ -7,6 +7,7 @@ A real basic command line app to try and make logging time on Teamwork.com quick
 git clone https://github.com/joshuk/tme.git
 cd tme
 npm install
+npm link
 ```
 
 ## Setup

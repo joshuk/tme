@@ -3,12 +3,16 @@ const fs = require('fs')
 class FileHelper {
   filepath = ''
 
-  constructor() {
-    this.filepath = './json/'
+  constructor(dirname) {
+    this.filepath = `${dirname}/json/`
   }
 
-  doesFileExist(filename) {
-    return fs.existsSync(this.filepath + filename)
+  doesFileExist(filename, filepath = this.filepath) {
+    if (!fs.existsSync(filepath)) {
+      fs.mkdirSync(filepath)
+    }
+
+    return fs.existsSync(filepath + filename)
   }
 
   getFileContents(filename) {

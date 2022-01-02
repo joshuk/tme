@@ -1,4 +1,3 @@
-require('dotenv').config();
 const { default: axios } = require("axios");
 
 class TeamworkApiHelper {
@@ -6,10 +5,17 @@ class TeamworkApiHelper {
   host = ''
   userId = ''
 
-  constructor() {
+  constructor(dirname) {
+    require('dotenv').config({ path: `${dirname}/.env` });
+
     this.authCode = process.env.TEAMWORK_AUTH_CODE
     this.host = process.env.TEAMWORK_HOST
     this.userId = process.env.TEAMWORK_USER_ID
+
+    if (!this.authCode || !this.host || !this.userId) {
+      console.log('.env values must be set before this script will work.')
+      process.exit()
+    }
   }
 
   makeRequest(url, options = '') {
